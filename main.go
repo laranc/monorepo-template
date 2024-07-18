@@ -3,8 +3,7 @@ package main
 import (
 	"runtime"
 
-	"github.com/go-gl/gl/v4.6-core/gl"
-	"github.com/laranc/monorepo/engine/graphics3d"
+	"github.com/laranc/monorepo/engine/graphics2d"
 	"github.com/veandco/go-sdl2/sdl"
 )
 
@@ -15,7 +14,7 @@ const (
 )
 
 var (
-	renderer *graphics3d.Renderer3D
+	renderer graphics2d.Renderer2D
 )
 
 func init() {
@@ -25,11 +24,10 @@ func init() {
 func main() {
 	var err error
 
-	renderer, err = graphics3d.NewRenderer3D(title, width, height, 4, 6)
+	renderer, err = graphics2d.MakeRenderer2D(title, width, height)
 	if err != nil {
 		panic(err)
 	}
-	gl.ClearColor(0.0, 0.0, 0.0, 1.0)
 	run()
 }
 
